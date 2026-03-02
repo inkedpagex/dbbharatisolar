@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>API Test</title>
+</head>
+
+<body>
+    <button id="btn">Fetch Works</button>
+    <pre id="out"></pre>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script>
+        document.getElementById("btn").onclick = async () => {
+            const out = document.getElementById("out");
+            out.textContent = "Loading...";
+            const data = await getWorks();
+            out.textContent = JSON.stringify(data, null, 2);
+        };
+    </script>
+</body>
+
+</html>
