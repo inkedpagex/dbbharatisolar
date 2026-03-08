@@ -109,6 +109,9 @@
         </div>
     </footer>
 
+    <a href="tel:+91821806275" class="call-float" target="_blank">
+        <i class="fas fa-phone"></i>
+    </a>
     <a href="https://wa.me/918445911649" class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
     </a>
@@ -123,6 +126,10 @@
             const grid = document.getElementById('gallery-grid');
 
             const staticProjects = [
+                { id: 's18', title: 'Residential Solar Setup', category: 'Residential', imageUrl: 'assets/img/New folder/WhatsApp Image 2026-03-07 at 10.18.34 PM.jpeg' },
+                { id: 's19', title: 'Commercial Panel Install', category: 'Commercial', imageUrl: 'assets/img/New folder/WhatsApp Image 2026-03-07 at 10.20.54 PM.jpeg' },
+                { id: 's20', title: 'Premium Solar Project', category: 'Residential', imageUrl: 'assets/img/New folder/WhatsApp Image 2026-03-07 at 10.26.25 PM (3).jpeg' },
+                { id: 's21', title: 'Large Scale Installation', category: 'Industrial', imageUrl: 'assets/img/New folder/WhatsApp Image 2026-03-07 at 10.43.32 PM (17).jpeg' },
                 { id: 's1', title: 'Skyline Residency Agra', category: 'Residential', imageUrl: 'assets/img/project-1.jpg' },
                 { id: 's2', title: 'Vikas Plaza Rooftop', category: 'Commercial', imageUrl: 'assets/img/project-2.jpg' },
                 { id: 's3', title: 'Industrial Complex Setup', category: 'Industrial', imageUrl: 'assets/img/project-3.jpg' },
@@ -168,10 +175,6 @@
             grid.innerHTML = displayList.map(item => `
                 <div class="gallery-item reveal" onclick="window.UI.openLightbox('${item.imageUrl}', '${item.title}')">
                     <img src="${item.imageUrl}" alt="${item.title}">
-                    <div class="gallery-info">
-                        <div class="gallery-cat">${item.category}</div>
-                        <div class="gallery-title">${item.title}</div>
-                    </div>
                 </div>
             `).join('');
 

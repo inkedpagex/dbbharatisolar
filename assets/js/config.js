@@ -17,7 +17,7 @@ const CONFIG = {
     // Branding
     COMPANY_NAME: 'DB Bharati Solar',
     TAGLINE: 'Powering Homes with Clean Energy',
-    CONTACT_PHONE: '8445911649'
+    CONTACT_PHONE: '821806275'
 };
 
 window.CONFIG = CONFIG;

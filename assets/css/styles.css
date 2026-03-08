@@ -18,7 +18,7 @@
      --radius-lg: 25px;
      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
      --container-width: 1300px;
-     --header-height: 90px;
+     --header-height: 100px;
      --font-heading: 'Noto Sans Devanagari', 'Poppins', sans-serif;
      --font-body: 'Poppins', 'Noto Sans Devanagari', sans-serif;
  }
@@ -35,6 +35,7 @@
      background-color: var(--bg-main);
      line-height: 1.6;
      overflow-x: hidden;
+     padding-top: var(--header-height);
  }
 
  /* Indian Pattern Divider */
@@ -112,11 +113,11 @@
  .section-title::after {
      content: '';
      position: absolute;
-     bottom: -10px;
+     bottom: -20px;
      left: 50%;
      transform: translateX(-50%);
-     width: 60px;
-     height: 4px;
+     width: 120px;
+     height: 5px;
      background: var(--accent);
      border-radius: 10px;
  }
@@ -184,11 +185,13 @@
      height: var(--header-height);
      display: flex;
      align-items: center;
-     position: sticky;
+     position: fixed;
      top: 0;
-     background: rgba(255, 255, 255, 0.7);
+     left: 0;
+     width: 100%;
+     background: rgba(255, 255, 255, 0.9);
      backdrop-filter: blur(20px);
-     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
      z-index: 1000;
  }
 
@@ -224,15 +227,20 @@
  .logo {
      display: flex;
      align-items: center;
-     gap: 12px;
-     font-size: 1.25rem;
+     gap: 15px;
+     font-size: 1.6rem;
      font-weight: 800;
      letter-spacing: -0.5px;
  }
 
  .logo img {
-     height: 45px;
-     border-radius: 8px;
+     height: 60px;
+     border-radius: 10px;
+     transition: 0.3s;
+ }
+
+ .logo:hover img {
+     transform: scale(1.05);
  }
 
  .nav-links {
@@ -329,9 +337,17 @@
  .card {
      background: white;
      border: 1px solid var(--border);
-     border-radius: var(--radius-md);
-     padding: 40px;
+     border-radius: 24px;
+     padding: 25px 20px;
      transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     height: 100%;
+ }
+
+ .card:nth-child(2) {
+     border: 2px solid var(--accent);
  }
 
  .card:hover {
@@ -430,12 +446,20 @@
 
  @media (max-width: 768px) {
      header {
-         height: 70px;
+         height: 85px;
+     }
+
+     .logo {
+         font-size: 1.4rem;
+     }
+     
+     .logo img {
+         height: 55px;
      }
 
      .nav-links {
          position: fixed;
-         top: 70px;
+         top: 85px;
          left: 0;
          width: 100%;
          background: white;
@@ -584,30 +608,53 @@
      transform: scale(1);
  }
 
- .whatsapp-float {
-     position: fixed;
-     bottom: 30px;
-     right: 30px;
-     width: 65px;
-     height: 65px;
-     background-color: #25d366;
-     color: white;
-     border-radius: 50px;
-     text-align: center;
-     font-size: 30px;
-     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-     z-index: 1000;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     text-decoration: none;
-     transition: all 0.3s ease;
- }
+  .whatsapp-float, .call-float {
+      position: fixed;
+      bottom: 30px;
+      width: 60px;
+      height: 60px;
+      color: white;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 26px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+  }
 
- .whatsapp-float:hover {
-     transform: scale(1.1) rotate(5deg);
-     box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
- }
+  .whatsapp-float {
+      right: 20px;
+      background-color: #25d366;
+  }
+
+  /* Desktop: WhatsApp only */
+  @media (min-width: 1024px) {
+      .call-float {
+          display: none !important;
+      }
+  }
+
+  /* Mobile: Calling only, move up to avoid overlap */
+  @media (max-width: 1023px) {
+      .whatsapp-float {
+          display: none !important;
+      }
+      .call-float {
+          right: 20px;
+          bottom: 100px; /* Elevated to avoid overlapping with bottom bar */
+          background-color: #0D47A1; /* Premium Blue */
+          color: white;
+          border-color: #0D47A1;
+      }
+  }
+
+  .whatsapp-float:hover, .call-float:hover {
+      transform: scale(1.1);
+  }
 
  /* Indian Pattern Divider */
  .section-divider {
@@ -1967,6 +2014,74 @@
      }
 
      .about-hero-sub {
+         font-size: 1rem;
+     }
+ }
+ 
+ /* Parent Branding Highlight - SR Green Pulse Media */
+ .parent-branding {
+     margin-top: 30px !important;
+     padding: 25px 40px;
+     background: #ffffff;
+     border-radius: 20px;
+     display: inline-block;
+     border: 1.5px solid #f0faf4;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+     position: relative;
+     overflow: hidden;
+ }
+ 
+ .parent-branding::before {
+     content: '';
+     position: absolute;
+     top: 0; left: 0; width: 4px; height: 100%;
+     background: var(--primary);
+     opacity: 0.8;
+ }
+ 
+ .parent-branding:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 20px 45px rgba(27, 94, 32, 0.1);
+     border-color: #dcfce7;
+ }
+ 
+ .parent-logo {
+     display: flex;
+     align-items: center;
+     gap: 18px;
+ }
+ 
+ .parent-logo img {
+     height: 50px;
+     width: auto;
+     border-radius: 12px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+     transition: all 0.4s ease;
+ }
+ 
+ .parent-branding:hover .parent-logo img {
+     transform: scale(1.1) rotate(3deg);
+ }
+ 
+ .parent-logo span {
+     font-weight: 800;
+     color: var(--primary-dark);
+     font-size: 1.2rem;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+ }
+ 
+ @media (max-width: 768px) {
+     .parent-branding {
+         padding: 20px 25px;
+         margin-top: 25px !important;
+         width: 90%;
+     }
+     .parent-logo img {
+         height: 40px;
+     }
+     .parent-logo span {
          font-size: 1rem;
      }
  }
